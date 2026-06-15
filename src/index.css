@@ -1,0 +1,63 @@
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+@import "tailwindcss";
+
+/* ===== تعریف تم به سبک Tailwind v4 ===== */
+@theme {
+  /* فونت */
+  --font-sans: "Vazirmatn", system-ui, sans-serif;
+  --font-vazir: "Vazirmatn", system-ui, sans-serif;
+
+  /* رنگ اصلی - آبی iOS */
+  --color-primary: #0A84FF;
+  --color-primary-light: #5AC8FA;
+  --color-primary-dark: #0066CC;
+  --color-primary-50: #EAF4FF;
+  --color-primary-100: #D5E9FF;
+  --color-primary-400: #3D9DFF;
+  --color-primary-500: #0A84FF;
+  --color-primary-600: #0070E0;
+
+  /* رنگ ثانویه - نقره‌ای / خاکستری */
+  --color-secondary: #8E8E93;
+  --color-secondary-light: #C7C7CC;
+  --color-secondary-dark: #636366;
+  --color-secondary-100: #F2F2F7;
+  --color-secondary-800: #1C1C1E;
+
+  /* پس‌زمینه‌های نوترال */
+  --color-neutral-bg: #F5F5F7;
+  --color-neutral-surface: #FFFFFF;
+
+  /* رادیوس */
+  --radius-ios: 1.25rem;
+
+  /* سایه‌ها */
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.06);
+  --shadow-glass: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== لایه base ===== */
+@layer base {
+  body {
+    @apply font-sans bg-secondary-100 text-secondary-800;
+  }
+}
+
+/* ===== کامپوننت‌ها ===== */
+@layer components {
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-md border border-white/40 shadow-soft;
+  }
+  .glass-header {
+    @apply bg-white/60 backdrop-blur-md border-b border-white/40;
+  }
+  .ios-btn {
+    @apply bg-primary-500 text-white px-4 py-2 rounded-xl font-medium
+           shadow-soft hover:bg-primary-600 transition-colors;
+  }
+  .ios-input {
+    @apply bg-white/80 border border-secondary-100 rounded-xl px-3 py-2
+           text-sm text-secondary-800 outline-none focus:border-primary-400;
+  }
+}
