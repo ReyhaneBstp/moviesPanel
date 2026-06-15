@@ -1,4 +1,4 @@
-// تعریف ساختار داده فیلم مطابق پاسخ سرور
+
 export interface Movie {
     id: string;
     title: string;
@@ -11,7 +11,6 @@ export interface Movie {
     is_published: boolean;
   }
   
-  // وضعیت‌های ممکن برای واکشی داده
   export interface MoviesState {
     data: Movie[];
     isLoading: boolean;

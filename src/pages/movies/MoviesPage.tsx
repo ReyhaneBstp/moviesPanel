@@ -6,7 +6,7 @@ export default function MoviesPage() {
   const { data, isLoading, error } = useMovies();
 
   return (
-    <div className="mx-auto min-h-screen max-w-2xl px-4 py-8" dir="rtl">
+    <div className="mx-auto max-w-6xl space-y-6" dir="rtl">
       <DashboardHeader count={data.length} />
 
       {isLoading && (
@@ -22,7 +22,7 @@ export default function MoviesPage() {
       )}
 
       {!isLoading && !error && (
-        <main className="fade-in">
+        <main className="fade-in bg-white rounded-3xl shadow-card border border-white/40 overflow-hidden">
           <MovieList movies={data} />
         </main>
       )}
