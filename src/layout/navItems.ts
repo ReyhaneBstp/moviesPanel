@@ -1,7 +1,7 @@
 import { HiOutlineHome, HiOutlineFilm, HiOutlineCog } from "react-icons/hi";
 
-export const navItems = [
-    { label: "پیشخوان", href: "/dashboard", icon: HiOutlineHome },
-    { label: "فیلم‌ها", href: "/dashboard/movies", icon: HiOutlineFilm },
-    { label: "تنظیمات", href: "/dashboard/settings", icon: HiOutlineCog },
-  ];
+export const navItems = {
+  "/dashboard": { label: "پیشخوان", icon: HiOutlineHome },
+  "/dashboard/movies": { label: "فیلم‌ها", icon: HiOutlineFilm },
+  "/dashboard/settings": { label: "تنظیمات", icon: HiOutlineCog },
+};

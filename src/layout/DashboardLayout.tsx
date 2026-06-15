@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { HiOutlineHome, HiOutlineMenu, HiOutlineX } from "react-icons/hi";
-import { Link, useLocation } from "react-router-dom"; 
+import { Link, useLocation } from "react-router-dom";
 import { navItems } from "./navItems";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 
-
 export function DashboardLayout({ children }: DashboardLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
+  const selectedNavItem = navItems[location.pathname];
 
   return (
     <div className="flex h-screen overflow-hidden bg-neutral-bg" dir="rtl">
@@ -32,21 +32,21 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         </div>
 
         <nav className="flex-1 p-4 space-y-2">
-          {navItems.map((item) => {
-            const isActive = location.pathname === item.href;
+          {Object.entries(navItems).map(([path, { label, icon: Icon }]) => {
+            const isActive = selectedNavItem.pathname === path;
             return (
               <Link
-                key={item.href}
-                to={item.href}
+                key={path}
+                to={path}
                 className={`flex items-center gap-3 rounded-2xl px-4 py-3 transition-all duration-200 ${
                   isActive
                     ? "bg-primary text-white shadow-soft"
                     : "text-secondary-dark hover:bg-primary-50 hover:text-primary"
                 }`}
               >
-                <item.icon size={20} />
+                <Icon size={20} />
                 <span className={`${sidebarOpen ? "block" : "hidden"} text-sm font-medium`}>
-                  {item.label}
+                  {label}
                 </span>
               </Link>
             );
@@ -71,7 +71,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
       <main className="flex-1 flex flex-col overflow-hidden">
         <header className="h-16 bg-white/80 backdrop-blur-md border-b border-white/40 px-6 flex items-center justify-between shadow-soft">
           <h1 className="text-lg font-bold text-gray-900">
-            داشبورد فیلم‌ها
+            {selectedNavItem?.label}
           </h1>
           <div className="flex items-center gap-4">
             <div className="w-8 h-8 rounded-full bg-primary-100 text-primary flex items-center justify-center">
