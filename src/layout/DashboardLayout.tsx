@@ -33,7 +33,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
         <nav className="flex-1 p-4 space-y-2">
           {Object.entries(navItems).map(([path, { label, icon: Icon }]) => {
-            const isActive = selectedNavItem.pathname === path;
+            const isActive = location.pathname === path;
             return (
               <Link
                 key={path}
