@@ -1,8 +1,8 @@
-import { memo } from "react";
-import { FaStar } from "react-icons/fa";
-import { HiOutlineCalendar, HiOutlineGlobeAlt } from "react-icons/hi";
-import { RiCheckboxCircleFill, RiCloseCircleFill } from "react-icons/ri";
-import type { Movie } from "../types/movie";
+import { memo } from 'react';
+import { FaStar } from 'react-icons/fa';
+import { HiOutlineCalendar, HiOutlineGlobeAlt } from 'react-icons/hi';
+import { RiCheckboxCircleFill, RiCloseCircleFill } from 'react-icons/ri';
+import type { Movie } from '../types/movie';
 
 interface MovieRowProps {
   movie: Movie;
@@ -11,23 +11,23 @@ interface MovieRowProps {
 function MovieRowComponent({ movie }: MovieRowProps) {
   return (
     <div
-      className="flex items-center gap-4 rounded-xl bg-white p-2
-                 border border-transparent hover:bg-primary-50/50
-                 hover:border-primary-100 transition-all duration-200"
+      className="flex items-center gap-4 rounded-2xl bg-white/80 backdrop-blur-sm p-2
+                 border border-white/60 shadow-sm hover:shadow-md hover:bg-white/90
+                 transition-all duration-200"
     >
       <img
         src={movie.poster}
         alt={movie.title}
         loading="lazy"
-        className="h-14 w-10 flex-shrink-0 rounded-lg object-cover shadow-sm"
+        className="h-14 w-10 flex-shrink-0 rounded-xl object-cover shadow-sm"
         onError={(e) => {
-          (e.target as HTMLImageElement).src = "https://via.placeholder.com/40x56?text=N/A";
+          (e.target as HTMLImageElement).src = 'https://via.placeholder.com/40x56?text=N/A';
         }}
       />
 
       <div className="flex-1 min-w-0">
-        <h4 className="text-sm font-bold text-gray-900 truncate">{movie.title}</h4>
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-xs text-secondary-dark">
+        <h4 className="text-sm font-bold text-gray-800 truncate">{movie.title}</h4>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-xs text-gray-500">
           <span className="flex items-center gap-1">
             <HiOutlineCalendar size={12} />
             {movie.year}
@@ -40,7 +40,7 @@ function MovieRowComponent({ movie }: MovieRowProps) {
             {movie.genres.slice(0, 2).map((genre) => (
               <span
                 key={genre}
-                className="rounded-full bg-primary-50 px-2 py-0.5 text-[10px] font-medium text-primary-dark"
+                className="rounded-full bg-indigo-50 px-2 py-0.5 text-[10px] font-medium text-indigo-600"
               >
                 {genre}
               </span>

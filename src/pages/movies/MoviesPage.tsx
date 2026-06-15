@@ -1,17 +1,26 @@
-import { useMovies } from "./hooks/useMovies";
-import { DashboardHeader } from "./components/DashboardHeader";
+
+import { useUrlFilters } from "./hooks/useUrlFilters";
+import { useFilteredMovies } from "./hooks/useFilteredMovies";
+import { SearchBar } from "./components/SearchBar";
+import { FilterPanel } from "./components/FilterPanel";
 import { MovieList } from "./components/MovieList";
+import { useGetMovies } from "./hooks/useGetMovies";
 
 export default function MoviesPage() {
-  const { data, isLoading, error } = useMovies();
+  const { movies, isLoading, error } = useGetMovies();
+  const { filters } = useUrlFilters();
+  const filteredMovies = useFilteredMovies(movies, filters);
 
   return (
-    <div className="mx-auto max-w-6xl space-y-6" dir="rtl">
-      <DashboardHeader count={data.length} />
+    <div className="mx-auto max-w-6xl space-y-5 px-4 py-6" dir="rtl">
+      <div className="flex flex-wrap items-center gap-3">
+        <SearchBar />
+        <FilterPanel />
+      </div>
 
       {isLoading && (
-        <div className="flex h-64 items-center justify-center text-primary">
-          <div className="h-10 w-10 animate-spin rounded-full border-4 border-current border-t-transparent" />
+        <div className="flex h-64 items-center justify-center">
+          <div className="h-10 w-10 animate-spin rounded-full border-4 border-indigo-200 border-t-indigo-500" />
         </div>
       )}
 
@@ -22,8 +31,8 @@ export default function MoviesPage() {
       )}
 
       {!isLoading && !error && (
-        <main className="fade-in bg-white rounded-3xl shadow-card border border-white/40 overflow-hidden">
-          <MovieList movies={data} />
+        <main className="fade-in rounded-3xl border border-white/30 bg-white/60 p-4 shadow-2xl backdrop-blur-md">
+          <MovieList movies={filteredMovies} />
         </main>
       )}
     </div>
