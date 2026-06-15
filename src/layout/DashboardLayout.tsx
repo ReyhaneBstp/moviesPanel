@@ -1,23 +1,19 @@
 import { useState } from "react";
-import { HiOutlineHome, HiOutlineFilm, HiOutlineCog, HiOutlineMenu, HiOutlineX } from "react-icons/hi";
+import { HiOutlineHome, HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import { Link, useLocation } from "react-router-dom"; 
+import { navItems } from "./navItems";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 
-const navItems = [
-  { label: "پیشخوان", href: "/dashboard", icon: HiOutlineHome },
-  { label: "فیلم‌ها", href: "/dashboard/movies", icon: HiOutlineFilm },
-  { label: "تنظیمات", href: "/dashboard/settings", icon: HiOutlineCog },
-];
 
 export function DashboardLayout({ children }: DashboardLayoutProps) {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
 
   return (
-    <div className="flex h-screen overflow-hidden bg-neutral-bg font-vazir" dir="rtl">
+    <div className="flex h-screen overflow-hidden bg-neutral-bg" dir="rtl">
       <aside
         className={`${
           sidebarOpen ? "w-64" : "w-20"
@@ -29,7 +25,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           </h2>
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 rounded-xl hover:bg-primary-50 text-secondary-dark"
+            className="p-2 rounded-xl hover:bg-primary-50 text-secondary-dark cursor-pointer"
           >
             {sidebarOpen ? <HiOutlineX size={20} /> : <HiOutlineMenu size={20} />}
           </button>
