@@ -14,7 +14,7 @@ export function MovieList({ movies }: MovieListProps) {
     count: movies.length,
     getScrollElement: () => parentRef.current,
     estimateSize: () => 80, 
-    overscan: 3,
+    overscan: 1,
   });
 
   return (
@@ -40,7 +40,7 @@ export function MovieList({ movies }: MovieListProps) {
                 top: 0,
                 right: 0,
                 width: "100%",
-                height: `${virtualRow.size}px`,
+                height: `60px`,
                 transform: `translateY(${virtualRow.start}px)`,
               }}
               className="px-4 py-1"
