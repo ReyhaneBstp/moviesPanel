@@ -14,7 +14,7 @@ export function MovieList({ movies }: MovieListProps) {
     count: movies.length,
     getScrollElement: () => parentRef.current,
     estimateSize: () => 112,
-    overscan: 6, 
+    overscan: 2, 
   });
 
   return (
@@ -25,7 +25,7 @@ export function MovieList({ movies }: MovieListProps) {
     >
       <div
         style={{
-          height: `${rowVirtualizer.getTotalSize()}px`,
+          height: `170px`,
           width: "100%",
           position: "relative",
         }}
