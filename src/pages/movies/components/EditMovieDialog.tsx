@@ -53,7 +53,7 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
       dir="rtl"
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm"
     >
-      <div className="w-full max-w-sm rounded-[--radius-ios] bg-white p-5 shadow-soft border border-gray-200/60">
+      <div className="w-full max-w-sm rounded-3xl border border-white/30 bg-white/90 p-5 shadow-soft">
         <div className="flex items-center justify-between mb-5">
           <h2 className="text-base font-semibold text-gray-800">
             ویرایش فیلم
@@ -105,7 +105,7 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
             <button
               type="button"
               onClick={() => setIsActive(true)}
-              className={`cursor-poniter rounded-xl px-4 py-1.5 text-xs font-medium transition-all ${
+              className={`cursor-pointer rounded-xl px-4 py-1.5 text-xs font-medium transition-all ${
                 isActive
                   ? "bg-primary-600 text-white shadow-sm"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
