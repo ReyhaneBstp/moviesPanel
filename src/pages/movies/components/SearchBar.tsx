@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { HiSearch, HiX } from "react-icons/hi";
-import { useDebounce } from '@/pages/movies/hooks/useDebounce';
-import { useUrlFilters } from '@/pages/movies/hooks/useUrlFilters';
-
+import { useDebounce } from "@/pages/movies/hooks/useDebounce";
+import { useUrlFilters } from "@/pages/movies/hooks/useUrlFilters";
 
 export function SearchBar() {
   const {
@@ -32,7 +31,7 @@ export function SearchBar() {
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
         placeholder="جستجوی فیلم..."
-        className="w-full rounded-2xl border-0 bg-white/70 backdrop-blur-sm py-3 pr-10 pl-10 text-sm
+        className="w-full rounded-xl border-0 bg-white/70 backdrop-blur-sm py-3 pr-10 pl-10 text-md
                    shadow-[0_2px_10px_-3px_rgba(0,0,0,0.05)] outline-none transition-all duration-300
                    focus:bg-white focus:shadow-[0_4px_20px_-5px_rgba(99,102,241,0.3)] focus:ring-2 focus:ring-indigo-200
                    placeholder:text-gray-400"

@@ -1,8 +1,7 @@
-import { useRef } from 'react';
-import { useVirtualizer } from '@tanstack/react-virtual';
-
-import { MovieRow } from './MovieRow';
-import type { Movie } from '@/pages/movies/types/movie';
+import { useRef } from "react";
+import { useVirtualizer } from "@tanstack/react-virtual";
+import { MovieRow } from "./MovieRow";
+import type { Movie } from "@/pages/movies/types/movie";
 
 interface MovieListProps {
   movies: Movie[];
@@ -27,15 +26,12 @@ export function MovieList({ movies }: MovieListProps) {
   }
 
   return (
-    <div
-      ref={parentRef}
-      className="h-[70vh] overflow-auto custom-scrollbar"
-    >
+    <div ref={parentRef} className="h-[70vh] overflow-auto custom-scrollbar">
       <div
         style={{
           height: `${rowVirtualizer.getTotalSize()}px`,
-          width: '100%',
-          position: 'relative',
+          width: "100%",
+          position: "relative",
         }}
       >
         {rowVirtualizer.getVirtualItems().map((virtualRow) => {
@@ -44,10 +40,10 @@ export function MovieList({ movies }: MovieListProps) {
             <div
               key={movie.id}
               style={{
-                position: 'absolute',
+                position: "absolute",
                 top: 0,
                 right: 0,
-                width: '100%',
+                width: "100%",
                 height: `80px`,
                 transform: `translateY(${virtualRow.start}px)`,
               }}

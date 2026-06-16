@@ -16,7 +16,8 @@
         "https://moviesapi.ir/images/tt0111161_screenshot2.jpg",
         "https://moviesapi.ir/images/tt0111161_screenshot3.jpg"
       ],
-      "is_active": true
+      "is_active": true,
+      "isActive": true
     },
     {
       "id": "2",
@@ -34,7 +35,8 @@
         "https://moviesapi.ir/images/tt0068646_screenshot2.jpg",
         "https://moviesapi.ir/images/tt0068646_screenshot3.jpg"
       ],
-      "is_active": true
+      "is_active": true,
+      "isActive": true
     },
     {
       "id": "3",
@@ -52,7 +54,8 @@
         "https://moviesapi.ir/images/tt0071562_screenshot2.jpg",
         "https://moviesapi.ir/images/tt0071562_screenshot3.jpg"
       ],
-      "is_active": true
+      "is_active": true,
+      "isActive": true
     },
     {
       "id": "4",
@@ -71,7 +74,8 @@
         "https://moviesapi.ir/images/tt0468569_screenshot2.jpg",
         "https://moviesapi.ir/images/tt0468569_screenshot3.jpg"
       ],
-      "is_active": false
+      "is_active": false,
+      "isActive": false
     },
     {
       "id": "5",
@@ -89,7 +93,8 @@
         "https://moviesapi.ir/images/tt0050083_screenshot2.jpg",
         "https://moviesapi.ir/images/tt0050083_screenshot3.jpg"
       ],
-      "is_active": false
+      "is_active": false,
+      "isActive": false
     },
     {
       "id": "6",
@@ -145,7 +150,8 @@
         "https://moviesapi.ir/images/tt0167260_screenshot2.jpg",
         "https://moviesapi.ir/images/tt0167260_screenshot3.jpg"
       ],
-      "is_active": true
+      "is_active": true,
+      "isActive": false
     },
     {
       "id": "9",
@@ -2246,19 +2252,6 @@
       "is_active": true
     },
     {
-      "id": "133",
-      "title": "Ran",
-      "poster": "https://moviesapi.ir/images/tt0089881_poster.jpg",
-      "year": "1985",
-      "country": "Japan, France",
-      "imdb_rating": "8.3",
-      "genres": [
-        "Action",
-        "Drama"
-      ],
-      "is_active": true
-    },
-    {
       "id": "134",
       "title": "The Gold Rush",
       "poster": "https://moviesapi.ir/images/tt0015864_poster.jpg",
@@ -2274,20 +2267,6 @@
         "https://moviesapi.ir/images/tt0015864_screenshot1.jpg",
         "https://moviesapi.ir/images/tt0015864_screenshot2.jpg",
         "https://moviesapi.ir/images/tt0015864_screenshot3.jpg"
-      ],
-      "is_active": true
-    },
-    {
-      "id": "135",
-      "title": "The Secret in Their Eyes",
-      "poster": "https://moviesapi.ir/images/tt1305806_poster.jpg",
-      "year": "2009",
-      "country": "Argentina, Spain",
-      "imdb_rating": "8.2",
-      "genres": [
-        "Drama",
-        "Mystery",
-        "Thriller"
       ],
       "is_active": true
     },

@@ -4,8 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev:vite": "vite",
+    "dev:mock": "node mock-server/server.cjs",
+    "dev": "concurrently \"pnpm run dev:vite\" \"pnpm run dev:mock\"",
+    "build": "tsc && vite build",
+    "postinstall": "cd mock-server && pnpm i",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -26,6 +29,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
+    "concurrently": "^10.0.3",
     "eslint": "^10.3.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
