@@ -49,12 +49,11 @@ function MovieRowComponent({ movie }: MovieRowProps) {
               </span>
             ))}
           </div>
+          <div className="flex items-center gap-1 text-amber-600 font-bold text-xs">
+            <FaStar size={12} className="text-amber-400" />
+            <span>{movie.imdb_rating}</span>
+          </div>
         </div>
-      </div>
-
-      <div className="flex items-center gap-1 text-amber-600 font-bold text-sm">
-        <FaStar size={12} className="text-amber-400" />
-        <span>{movie.imdb_rating}</span>
       </div>
 
       <div className="flex-shrink-0">

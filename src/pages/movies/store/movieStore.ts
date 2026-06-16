@@ -15,7 +15,7 @@ interface MovieStore {
 
 export const useMovieStore = create<MovieStore>((set) => ({
   movies: [],
-  isLoading: false,
+  isLoading: true,
   error: null,
   fetched: false,
   setMovies: (movies) => set({ movies, isLoading: false, error: null }),
