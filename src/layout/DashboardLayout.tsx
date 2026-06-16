@@ -69,7 +69,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
       </aside>
 
       <main className="flex-1 flex flex-col overflow-hidden">
-        <header className="h-16 bg-white/80 backdrop-blur-md border-b border-white/40 px-6 flex items-center justify-between shadow-soft">
+        <header className="h-[68px]  bg-white/80 backdrop-blur-md border-b border-white/40 px-6 flex items-center justify-between shadow-soft">
           <h1 className="text-lg font-bold text-gray-900">
             {selectedNavItem?.label}
           </h1>

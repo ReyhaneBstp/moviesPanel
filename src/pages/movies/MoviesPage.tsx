@@ -1,4 +1,3 @@
-
 import { useUrlFilters } from "./hooks/useUrlFilters";
 import { useFilteredMovies } from "./hooks/useFilteredMovies";
 import { SearchBar } from "./components/SearchBar";
@@ -7,7 +6,7 @@ import { MovieList } from "./components/MovieList";
 import { useGetMovies } from "./hooks/useGetMovies";
 
 export default function MoviesPage() {
-  const { movies, isLoading, error } = useGetMovies();
+  const { movies, isLoading, error, refetch } = useGetMovies();
   const { filters } = useUrlFilters();
   const filteredMovies = useFilteredMovies(movies, filters);
 
@@ -25,8 +24,14 @@ export default function MoviesPage() {
       )}
 
       {error && (
-        <div className="rounded-2xl bg-red-50 p-6 text-center text-red-600 border border-red-100">
+        <div className="rounded-2xl bg-red-50 p-6 text-center text-red-600 border border-red-100 space-y-3">
           <p>{error}</p>
+          <button
+            onClick={refetch}
+            className="rounded-lg cursor-pointer bg-red-100 px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-200 transition-colors"
+          >
+            تلاش مجدد
+          </button>
         </div>
       )}
 

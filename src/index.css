@@ -1,63 +1,79 @@
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
 @import "tailwindcss";
 
-/* ===== تعریف تم به سبک Tailwind v4 ===== */
 @theme {
-  /* فونت */
+
   --font-sans: "Vazirmatn", system-ui, sans-serif;
   --font-vazir: "Vazirmatn", system-ui, sans-serif;
 
-  /* رنگ اصلی - آبی iOS */
-  --color-primary: #0A84FF;
-  --color-primary-light: #5AC8FA;
-  --color-primary-dark: #0066CC;
-  --color-primary-50: #EAF4FF;
-  --color-primary-100: #D5E9FF;
-  --color-primary-400: #3D9DFF;
-  --color-primary-500: #0A84FF;
-  --color-primary-600: #0070E0;
+  --color-primary-50: #f0f4ff;
+  --color-primary-100: #dae3ff;
+  --color-primary-200: #b8ceff;
+  --color-primary-300: #8aaaff;
+  --color-primary-400: #5982ff;
+  --color-primary-500: #2952e3;   
+  --color-primary-600: #1a3bbf;
+  --color-primary-700: #11288c;
+  --color-primary-800: #0c1b66;
+  --color-primary-900: #081040;
 
-  /* رنگ ثانویه - نقره‌ای / خاکستری */
-  --color-secondary: #8E8E93;
-  --color-secondary-light: #C7C7CC;
-  --color-secondary-dark: #636366;
-  --color-secondary-100: #F2F2F7;
-  --color-secondary-800: #1C1C1E;
+  --color-primary: var(--color-primary-600);
+  --color-primary-light: #5a9aff;
+  --color-primary-dark: #0e1f6d;
 
-  /* پس‌زمینه‌های نوترال */
+
+  --color-secondary-50: #f8f8fa;
+  --color-secondary-100: #f2f2f7;
+  --color-secondary-200: #e5e5ea;
+  --color-secondary-300: #d1d1d6;
+  --color-secondary-400: #c7c7cc;
+  --color-secondary-500: #8e8e93;
+  --color-secondary-600: #636366;
+  --color-secondary-700: #48484a;
+  --color-secondary-800: #1c1c1e;
+  --color-secondary-900: #0a0a0b;
+
+  --color-secondary: var(--color-secondary-500);
+  --color-secondary-light: var(--color-secondary-400);
+  --color-secondary-dark: var(--color-secondary-600);
+
+
   --color-neutral-bg: #F5F5F7;
   --color-neutral-surface: #FFFFFF;
 
-  /* رادیوس */
-  --radius-ios: 1.25rem;
 
-  /* سایه‌ها */
+  --radius-ios: 1.25rem;
   --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.06);
   --shadow-glass: 0 4px 24px rgba(0, 0, 0, 0.08);
   --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* ===== لایه base ===== */
 @layer base {
   body {
-    @apply font-sans bg-secondary-100 text-secondary-800;
+    @apply  bg-secondary-100 text-secondary-800;
   }
 }
 
-/* ===== کامپوننت‌ها ===== */
 @layer components {
-  .glass-panel {
-    @apply bg-white/70 backdrop-blur-md border border-white/40 shadow-soft;
+  .btn {
+    @apply inline-flex items-center justify-center cursor-pointer
+           rounded-xl font-medium transition-all
+           disabled:opacity-50 disabled:cursor-not-allowed;
   }
-  .glass-header {
-    @apply bg-white/60 backdrop-blur-md border-b border-white/40;
+  .btn-sm { @apply px-3 py-1.5 text-xs; }
+  .btn-md { @apply px-5 py-2.5 text-sm; }   
+  .btn-lg { @apply px-6 py-3 text-base; }
+
+  .btn-primary   { @apply bg-primary-600 text-white hover:bg-primary-700; }
+  .btn-secondary { @apply bg-secondary-600 text-white hover:bg-secondary-700; }
+
+  .btn-ghost {
+    @apply px-2 py-2 text-sm text-gray-500 hover:text-gray-700 transition-colors;
   }
-  .ios-btn {
-    @apply bg-primary-500 text-white px-4 py-2 rounded-xl font-medium
-           shadow-soft hover:bg-primary-600 transition-colors;
+  .card {
+    @apply rounded-3xl border border-white/30 bg-white/90 p-2 shadow-soft;
   }
-  .ios-input {
-    @apply bg-white/80 border border-secondary-100 rounded-xl px-3 py-2
-           text-sm text-secondary-800 outline-none focus:border-primary-400;
+  .input {
+    @apply rounded-xl border border-gray-200 px-3 py-2 text-sm outline-none focus:border-primary-500;
   }
 }
