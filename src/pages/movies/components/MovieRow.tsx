@@ -40,7 +40,7 @@ function MovieRowComponent({ movie }: MovieRowProps) {
             {movie.genres.slice(0, 2).map((genre) => (
               <span
                 key={genre}
-                className="rounded-full bg-indigo-50 px-2 py-0.5 text-[10px] font-medium text-indigo-600"
+                className="rounded-full bg-primary-50 px-2 py-0.5 text-[10px] font-medium text-primary-600"
               >
                 {genre}
               </span>

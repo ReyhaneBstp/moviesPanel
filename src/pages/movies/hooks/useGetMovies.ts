@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { movieService } from '../services/movieService';
 import { useMovieStore } from '../store/movieStore';
 
@@ -6,9 +6,9 @@ export function useGetMovies() {
   const { movies, isLoading, error, fetched, setMovies, setLoading, setError, setFetched } =
     useMovieStore();
 
-  useEffect(() => {
-    if (fetched) return; 
+  const fetchMovies = useCallback(() => {
     setLoading(true);
+    setError(null); 
     movieService
       .getMovies()
       .then((data) => {
@@ -16,9 +16,16 @@ export function useGetMovies() {
         setFetched();
       })
       .catch((err) => {
-        setError(err instanceof Error ? err.message : 'خطا در دریافت فیلم‌ها');
+        console.error(err)
+        setError('خطا در دریافت فیلم‌ها');
+        setLoading(false); 
       });
-  }, [fetched]);
+  }, [setMovies, setLoading, setError, setFetched]);
 
-  return { movies, isLoading, error };
+  useEffect(() => {
+    if (fetched) return;
+    fetchMovies();
+  }, [fetched, fetchMovies]);
+
+  return { movies, isLoading, error, refetch: fetchMovies };
 }
