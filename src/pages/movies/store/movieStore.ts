@@ -1,8 +1,7 @@
-import { create } from 'zustand';
-import type { Movie } from '../types/movie';
+import { create } from "zustand";
+import type { Movie } from "../types/movie";
 
-
-interface MovieStore {
+interface MovieState {
   movies: Movie[];
   isLoading: boolean;
   error: string | null;
@@ -11,15 +10,20 @@ interface MovieStore {
   setLoading: (loading: boolean) => void;
   setError: (error: string | null) => void;
   setFetched: () => void;
+  updateMovie: (updated: Movie) => void; 
 }
 
-export const useMovieStore = create<MovieStore>((set) => ({
+export const useMovieStore = create<MovieState>((set) => ({
   movies: [],
-  isLoading: true,
+  isLoading: false,
   error: null,
   fetched: false,
   setMovies: (movies) => set({ movies, isLoading: false, error: null }),
-  setLoading: (loading) => set({ isLoading: loading }),
+  setLoading: (isLoading) => set({ isLoading }),
   setError: (error) => set({ error, isLoading: false }),
   setFetched: () => set({ fetched: true }),
+  updateMovie: (updated) =>
+    set((state) => ({
+      movies: state.movies.map((m) => (m.id === updated.id ? updated : m)),
+    })),
 }));
