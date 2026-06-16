@@ -28,7 +28,7 @@ export default function MoviesPage() {
           <p>{error}</p>
           <button
             onClick={refetch}
-            className="rounded-lg cursor-pointer bg-red-100 px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-200 transition-colors"
+            className="btn btn-md bg-red-100 text-red-700 hover:bg-red-200"
           >
             تلاش مجدد
           </button>
