@@ -1,9 +1,9 @@
 import { useState, type FormEvent } from "react";
 import { createPortal } from "react-dom";
 import { HiX } from "react-icons/hi";
-import type { Movie } from "../types/movie";
-import { useMovieStore } from "../store/movieStore";
-import { movieService } from "../services/movieService";
+import type { Movie } from '@/pages/movies/types/movie';
+import { useMovieStore } from '@/pages/movies/store/movieStore';
+import { movieService } from '@/pages/movies/services/movieService';
 
 interface EditMovieDialogProps {
   movie: Movie;

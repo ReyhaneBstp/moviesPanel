@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 
 import { MovieRow } from './MovieRow';
-import type { Movie } from '../types/movie';
+import type { Movie } from '@/pages/movies/types/movie';
 
 interface MovieListProps {
   movies: Movie[];

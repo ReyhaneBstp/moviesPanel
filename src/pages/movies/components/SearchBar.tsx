@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { HiSearch, HiX } from "react-icons/hi";
-import { useDebounce } from "../hooks/useDebounce";
-import { useUrlFilters } from "../hooks/useUrlFilters";
+import { useDebounce } from '@/pages/movies/hooks/useDebounce';
+import { useUrlFilters } from '@/pages/movies/hooks/useUrlFilters';
 
 
 export function SearchBar() {

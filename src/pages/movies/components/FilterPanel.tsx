@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
 import { HiAdjustments, HiX } from "react-icons/hi";
 import { FaStar } from "react-icons/fa";
-import { useMovieStore } from "../store/movieStore";
-import { useUrlFilters } from "../hooks/useUrlFilters";
-import type { Filters } from "../types/filters";
+import { useMovieStore } from '@/pages/movies/store/movieStore';
+import { useUrlFilters } from '@/pages/movies/hooks/useUrlFilters';
+import type { Filters } from '@/pages/movies/types/filters';
 
 export function FilterPanel() {
   const {

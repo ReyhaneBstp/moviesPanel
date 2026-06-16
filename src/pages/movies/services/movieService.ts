@@ -1,5 +1,5 @@
-import { httpPatch, httpGet } from "../../../shared/services/httpClient";
-import type { Movie } from "../types/movie";
+import { httpPatch, httpGet } from '@/shared/services/httpClient';
+import type { Movie } from '@/pages/movies/types/movie';
 
 export const movieService = {
   getMovies(): Promise<Movie[]> {

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import type { Movie } from '../types/movie';
-import type { Filters } from '../types/filters';
+import type { Movie } from '@/pages/movies/types/movie';
+import type { Filters } from '@/pages/movies/types/filters';
 
 
 export function useFilteredMovies(movies: Movie[], filters: Filters) {

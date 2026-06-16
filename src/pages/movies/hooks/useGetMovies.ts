@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from 'react';
-import { movieService } from '../services/movieService';
-import { useMovieStore } from '../store/movieStore';
+import { movieService } from '@/pages/movies/services/movieService';
+import { useMovieStore } from '@/pages/movies/store/movieStore';
 
 export function useGetMovies() {
   const { movies, isLoading, error, fetched, setMovies, setLoading, setError, setFetched } =

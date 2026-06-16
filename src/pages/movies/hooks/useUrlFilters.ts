@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { useCallback, useMemo } from 'react';
-import type { Filters } from '../types/filters';
+import type { Filters } from '@/pages/movies/types/filters';
 
 
 export function useUrlFilters() {

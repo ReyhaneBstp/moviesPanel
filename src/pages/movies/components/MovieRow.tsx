@@ -2,7 +2,7 @@ import { memo, useState } from "react";
 import { FaStar, FaEdit } from "react-icons/fa";
 import { HiOutlineCalendar, HiOutlineGlobeAlt } from "react-icons/hi";
 import { RiCheckboxCircleFill, RiCloseCircleFill } from "react-icons/ri";
-import type { Movie } from "../types/movie";
+import type { Movie } from '@/pages/movies/types/movie';
 import { EditMovieDialog } from "./EditMovieDialog";
 
 interface MovieRowProps {
