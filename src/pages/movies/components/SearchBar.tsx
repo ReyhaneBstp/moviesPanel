@@ -7,20 +7,20 @@ import { useUrlFilters } from "../hooks/useUrlFilters";
 export function SearchBar() {
   const {
     filters,
-    filters: { search: value },
+    filters: { search: searchFilter },
     setFilters,
   } = useUrlFilters();
-  const [input, setInput] = useState(value);
-  const debounced = useDebounce(input, 350);
+  const [searchInput, setSearchInput] = useState(searchFilter);
+  const debounced = useDebounce(searchInput, 400);
   const onChange = (val: string) => setFilters({ ...filters, search: val });
 
   useEffect(() => {
-    if (debounced !== value) onChange(debounced);
+    if (debounced !== searchFilter) onChange(debounced);
   }, [debounced]);
 
   useEffect(() => {
-    setInput(value);
-  }, [value]);
+    setSearchInput(searchFilter);
+  }, [searchFilter]);
 
   return (
     <div className="relative w-full max-w-md">
@@ -29,8 +29,8 @@ export function SearchBar() {
       </div>
       <input
         type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
+        value={searchInput}
+        onChange={(e) => setSearchInput(e.target.value)}
         placeholder="جستجوی فیلم..."
         className="w-full rounded-2xl border-0 bg-white/70 backdrop-blur-sm py-3 pr-10 pl-10 text-sm
                    shadow-[0_2px_10px_-3px_rgba(0,0,0,0.05)] outline-none transition-all duration-300
@@ -38,10 +38,10 @@ export function SearchBar() {
                    placeholder:text-gray-400"
         dir="rtl"
       />
-      {input && (
+      {searchInput && (
         <button
           onClick={() => {
-            setInput("");
+            setSearchInput("");
             onChange("");
           }}
           className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400 hover:text-gray-600"

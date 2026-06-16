@@ -8,14 +8,14 @@ interface MovieListProps {
   movies: Movie[];
 }
 
-export function MovieList({ movies = [] }: MovieListProps) {
+export function MovieList({ movies }: MovieListProps) {
   const parentRef = useRef<HTMLDivElement>(null);
 
   const rowVirtualizer = useVirtualizer({
     count: movies.length,
     getScrollElement: () => parentRef.current,
     estimateSize: () => 80,
-    overscan: 2,
+    overscan: 1,
   });
 
   if (movies.length === 0) {
