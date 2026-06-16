@@ -46,7 +46,7 @@ async function fetchAllMovies() {
     for (let i = 0; i < TOTAL_MOVIES_NEEDED; i++) {
         let movie = { ...fetchedMovies[i % fetchedCount] }; 
         movie.id = i + 1;
-        movie.is_published = Math.random() > 0.5;
+        movie.is_active = Math.random() > 0.5;
         finalMovies.push(movie);
     }
     const dbData = {

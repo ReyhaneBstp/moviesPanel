@@ -1,8 +1,8 @@
-import { memo } from 'react';
-import { FaStar } from 'react-icons/fa';
-import { HiOutlineCalendar, HiOutlineGlobeAlt } from 'react-icons/hi';
-import { RiCheckboxCircleFill, RiCloseCircleFill } from 'react-icons/ri';
-import type { Movie } from '../types/movie';
+import { memo } from "react";
+import { FaStar } from "react-icons/fa";
+import { HiOutlineCalendar, HiOutlineGlobeAlt } from "react-icons/hi";
+import { RiCheckboxCircleFill, RiCloseCircleFill } from "react-icons/ri";
+import type { Movie } from "../types/movie";
 
 interface MovieRowProps {
   movie: Movie;
@@ -21,12 +21,15 @@ function MovieRowComponent({ movie }: MovieRowProps) {
         loading="lazy"
         className="h-14 w-10 flex-shrink-0 rounded-xl object-cover shadow-sm"
         onError={(e) => {
-          (e.target as HTMLImageElement).src = 'https://via.placeholder.com/40x56?text=N/A';
+          (e.target as HTMLImageElement).src =
+            "https://via.placeholder.com/40x56?text=N/A";
         }}
       />
 
       <div className="flex-1 min-w-0">
-        <h4 className="text-sm font-bold text-gray-800 truncate">{movie.title}</h4>
+        <h4 className="text-sm font-bold text-gray-800 truncate">
+          {movie.title}
+        </h4>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-xs text-gray-500">
           <span className="flex items-center gap-1">
             <HiOutlineCalendar size={12} />
@@ -55,15 +58,15 @@ function MovieRowComponent({ movie }: MovieRowProps) {
       </div>
 
       <div className="flex-shrink-0">
-        {movie.is_published ? (
+        {movie.is_active ? (
           <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-700 border border-green-200">
             <RiCheckboxCircleFill size={14} />
-            منتشر شده
+            فعال
           </span>
         ) : (
           <span className="inline-flex items-center gap-1 rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-700 border border-red-200">
             <RiCloseCircleFill size={14} />
-            پیش‌نویس
+            غیرفعال
           </span>
         )}
       </div>

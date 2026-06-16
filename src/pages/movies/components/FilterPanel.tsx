@@ -155,8 +155,8 @@ export function FilterPanel() {
               <div className="flex gap-2">
                 {[
                   { value: "all", label: "همه" },
-                  { value: "published", label: "منتشر شده" },
-                  { value: "draft", label: "پیش‌نویس" },
+                  { value: "active", label: "فعال" },
+                  { value: "deactive", label: "غیرفعال" },
                 ].map((opt) => (
                   <button
                     key={opt.value}

@@ -8,7 +8,7 @@ export interface Movie {
     imdb_rating: string;
     genres: string[];
     images: string[];
-    is_published: boolean;
+    is_active: boolean;
   }
   
   export interface MoviesState {

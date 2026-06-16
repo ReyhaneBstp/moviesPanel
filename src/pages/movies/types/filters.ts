@@ -4,5 +4,5 @@ export type Filters = {
     minRating: number | null;
     yearFrom: number | null;
     yearTo: number | null;
-    status: 'all' | 'published' | 'draft';
+    status: 'all' | 'active' | 'deactive';
 };

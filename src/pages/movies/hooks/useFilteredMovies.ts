@@ -27,10 +27,10 @@ export function useFilteredMovies(movies: Movie[], filters: Filters) {
       result = result.filter((m) => parseInt(m.year) <= filters.yearTo!);
     }
 
-    if (filters.status === 'published') {
-      result = result.filter((m) => m.is_published);
-    } else if (filters.status === 'draft') {
-      result = result.filter((m) => !m.is_published);
+    if (filters.status === 'active') {
+      result = result.filter((m) => m.is_active);
+    } else if (filters.status === 'deactive') {
+      result = result.filter((m) => !m.is_active);
     }
 
     return result;
