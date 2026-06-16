@@ -53,14 +53,12 @@ function MovieRowComponent({ movie }: MovieRowProps) {
                 </span>
               ))}
             </div>
+            <div className="flex items-center gap-1 text-amber-600 font-bold text-xs">
+              <FaStar size={12} className="text-amber-400" />
+              <span>{movie.imdb_rating}</span>
+            </div>
           </div>
         </div>
-
-        <div className="flex items-center gap-1 text-amber-600 font-bold text-sm">
-          <FaStar size={12} className="text-amber-400" />
-          <span>{movie.imdb_rating}</span>
-        </div>
-
 
         <div className="flex-shrink-0">
           {movie.is_active ? (
@@ -78,7 +76,7 @@ function MovieRowComponent({ movie }: MovieRowProps) {
 
         <button
           onClick={() => setIsDialogOpen(true)}
-          className="flex-shrink-0 p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+          className="cursor-pointer flex-shrink-0 p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
           title="ویرایش فیلم"
         >
           <FaEdit size={16} />
@@ -86,10 +84,7 @@ function MovieRowComponent({ movie }: MovieRowProps) {
       </div>
 
       {isDialogOpen && (
-        <EditMovieDialog
-          movie={movie}
-          onClose={() => setIsDialogOpen(false)}
-        />
+        <EditMovieDialog movie={movie} onClose={() => setIsDialogOpen(false)} />
       )}
     </>
   );

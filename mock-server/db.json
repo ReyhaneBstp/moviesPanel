@@ -2,7 +2,7 @@
   "movies": [
     {
       "id": "1",
-      "title": "The Shawshank Redemption",
+      "title": "The Shawshank Redemption :)",
       "poster": "https://moviesapi.ir/images/tt0111161_poster.jpg",
       "year": "1994",
       "country": "USA",
@@ -1351,7 +1351,7 @@
         "https://moviesapi.ir/images/tt0180093_screenshot2.jpg",
         "https://moviesapi.ir/images/tt0180093_screenshot3.jpg"
       ],
-      "is_active": false
+      "is_active": true
     },
     {
       "id": "79",

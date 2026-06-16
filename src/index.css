@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* --- فونت‌ها --- */
+
   --font-sans: "Vazirmatn", system-ui, sans-serif;
   --font-vazir: "Vazirmatn", system-ui, sans-serif;
 

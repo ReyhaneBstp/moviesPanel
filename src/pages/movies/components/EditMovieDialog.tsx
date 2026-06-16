@@ -49,91 +49,101 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
   };
 
   return createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-      <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl border border-gray-100">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-bold text-gray-800">ویرایش فیلم</h2>
+    <div
+      dir="rtl"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm"
+    >
+      <div className="w-full max-w-sm rounded-[--radius-ios] bg-white p-5 shadow-soft border border-gray-200/60">
+        <div className="flex items-center justify-between mb-5">
+          <h2 className="text-base font-semibold text-gray-800">
+            ویرایش فیلم
+          </h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700"
+            className="cursor-pointer text-gray-400 hover:text-gray-600 transition-colors"
           >
             <HiX size={20} />
           </button>
         </div>
-
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-600">
-              عنوان
-            </label>
+            <label className="block text-sm text-gray-500 mb-1">عنوان</label>
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
+              className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder:text-gray-300 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400/30 transition-all"
               required
             />
           </div>
-
           <div>
-            <label className="block text-sm font-medium text-gray-600">
+            <label className="block text-sm text-gray-500 mb-1">
               سال تولید
             </label>
             <input
               value={year}
               onChange={(e) => setYear(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
-              placeholder="2026"
+              className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder:text-gray-300 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400/30 transition-all"
+              placeholder="۱۴۰۵"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-600">
+            <label className="block text-sm text-gray-500 mb-1">
               ژانرها (با کاما جدا کنید)
             </label>
             <input
               value={genresStr}
               onChange={(e) => setGenresStr(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
-              placeholder="Action, Drama"
+              className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder:text-gray-300 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400/30 transition-all"
+              placeholder="اکشن, درام"
               required
             />
           </div>
 
-          <div className="flex items-center gap-2">
-            <label className="text-sm font-medium text-gray-600">وضعیت</label>
+          <div className="flex items-center gap-1">
             <button
               type="button"
-              onClick={() => setIsActive(!isActive)}
-              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                isActive ? "bg-green-500" : "bg-gray-300"
+              onClick={() => setIsActive(true)}
+              className={`cursor-poniter rounded-xl px-4 py-1.5 text-xs font-medium transition-all ${
+                isActive
+                  ? "bg-primary-600 text-white shadow-sm"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
-              <span
-                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                  isActive ? "translate-x-6" : "translate-x-1"
-                }`}
-              />
+              فعال
             </button>
-            <span className="text-xs text-gray-500">
-              {isActive ? "فعال" : "غیرفعال"}
-            </span>
+            <button
+              type="button"
+              onClick={() => setIsActive(false)}
+              className={`cursor-pointer rounded-xl px-4 py-1.5 text-xs font-medium transition-all ${
+                !isActive
+                  ? "bg-secondary-600 text-white shadow-sm"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              غیرفعال
+            </button>
           </div>
 
-          {error && <p className="text-xs text-red-500">{error}</p>}
+          {error && (
+            <p className="text-xs text-red-500 bg-red-50 rounded-lg px-3 py-2">
+              {error}
+            </p>
+          )}
 
-          <div className="flex justify-end gap-2 pt-2">
+          <div className="flex justify-end gap-3 pt-3">
             <button
               type="button"
               onClick={onClose}
-              className="rounded-lg border border-gray-300 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              className="cursor-pointer text-sm text-gray-500 hover:text-gray-700 transition-colors px-2 py-2"
             >
               انصراف
             </button>
             <button
               type="submit"
               disabled={saving}
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+              className="cursor-pointer rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-700 disabled:opacity-50 transition-all"
             >
               {saving ? "در حال ذخیره..." : "ذخیره"}
             </button>
