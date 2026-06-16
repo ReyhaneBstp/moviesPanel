@@ -60,7 +60,7 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
           </h2>
           <button
             onClick={onClose}
-            className="cursor-pointer text-gray-400 hover:text-gray-600 transition-colors"
+            className="btn text-gray-400 hover:text-gray-600 transition-colors"
           >
             <HiX size={20} />
           </button>
@@ -71,7 +71,7 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder:text-gray-300 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400/30 transition-all"
+              className="w-full input"
               required
             />
           </div>
@@ -82,7 +82,7 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
             <input
               value={year}
               onChange={(e) => setYear(e.target.value)}
-              className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder:text-gray-300 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400/30 transition-all"
+              className="w-full input"
               placeholder="۱۴۰۵"
               required
             />
@@ -95,7 +95,7 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
             <input
               value={genresStr}
               onChange={(e) => setGenresStr(e.target.value)}
-              className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder:text-gray-300 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400/30 transition-all"
+              className="w-full input"
               placeholder="اکشن, درام"
               required
             />
@@ -116,7 +116,7 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
             <button
               type="button"
               onClick={() => setIsActive(false)}
-              className={`cursor-pointer rounded-xl px-4 py-1.5 text-xs font-medium transition-all ${
+              className={`btn btn-sm ${
                 !isActive
                   ? "bg-secondary-600 text-white shadow-sm"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
@@ -136,14 +136,14 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
             <button
               type="button"
               onClick={onClose}
-              className="cursor-pointer text-sm text-gray-500 hover:text-gray-700 transition-colors px-2 py-2"
+              className="btn btn-ghost btn-md"
             >
               انصراف
             </button>
             <button
               type="submit"
               disabled={saving}
-              className="cursor-pointer rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-700 disabled:opacity-50 transition-all"
+              className="btn btn-md btn-primary"
             >
               {saving ? "در حال ذخیره..." : "ذخیره"}
             </button>

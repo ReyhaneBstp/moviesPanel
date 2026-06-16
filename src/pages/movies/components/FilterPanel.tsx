@@ -32,7 +32,7 @@ export function FilterPanel() {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="cursor-pointer flex items-center gap-2 rounded-2xl bg-white/70 backdrop-blur-sm px-4 py-3 text-sm font-medium
+        className="btn gap-2 bg-white/70 backdrop-blur-sm px-4 py-3 text-sm font-medium
                    shadow-[0_2px_10px_-3px_rgba(0,0,0,0.05)] transition hover:bg-white hover:shadow-md
                    border border-white/50"
       >
@@ -57,8 +57,7 @@ export function FilterPanel() {
             onClick={() => setIsOpen(false)}
           />
           <div
-            className="absolute left-0 top-14 z-50 w-80 rounded-3xl border border-white/30 bg-white/90
-                          p-5 shadow-2xl animate-in slide-in-from-top-2 duration-200"
+            className="absolute left-0 top-14 z-50 w-80 card p-5"
           >
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-base font-bold text-gray-800">
@@ -81,10 +80,10 @@ export function FilterPanel() {
                   <button
                     key={genre}
                     onClick={() => toggleGenre(genre)}
-                    className={`cursor-pointer rounded-full px-3 py-1 text-xs font-medium transition ${
+                    className={`btn btn-sm ${
                       filters.genres.includes(genre)
-                        ? "bg-primary-600 text-white shadow-sm"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                        ? "btn-primary"
+                        : "bg-gray-100 text-gray-600 border border-primary-200 hover:bg-gray-200"
                     }`}
                   >
                     {genre}
@@ -128,7 +127,7 @@ export function FilterPanel() {
                     })
                   }
                   placeholder="مثلا ۲۰۰۰"
-                  className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm outline-none focus:border-primary-500"
+                  className="w-full input"
                 />
               </div>
               <div>
@@ -144,7 +143,7 @@ export function FilterPanel() {
                     })
                   }
                   placeholder="مثلا ۲۰۲۴"
-                  className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm outline-none focus:border-primary-500"
+                  className="w-full input"
                 />
               </div>
             </div>
@@ -178,14 +177,13 @@ export function FilterPanel() {
             <div className="flex justify-between">
               <button
                 onClick={onReset}
-                className="cursor-pointer rounded-xl px-4 py-2 text-xs font-semibold text-gray-500 hover:bg-gray-100"
+                className="btn btn-sm btn-ghost"
               >
                 حذف همه فیلترها
               </button>
               <button
                 onClick={() => setIsOpen(false)}
-                className="cursor-pointer rounded-xl bg-primary-600 px-5 py-2 text-xs font-bold text-white shadow-md
-                           hover:bg-primary-700 transition"
+                className="btn btn-sm btn-primary"
               >
                 تایید
               </button>

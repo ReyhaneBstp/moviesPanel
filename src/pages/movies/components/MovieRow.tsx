@@ -15,8 +15,7 @@ function MovieRowComponent({ movie }: MovieRowProps) {
   return (
     <>
       <div
-        className="flex items-center gap-4 rounded-2xl bg-white/80 backdrop-blur-sm p-2
-                   border border-white/60 shadow-sm hover:shadow-md hover:bg-white/90
+        className="flex items-center gap-4 card hover:shadow-md hover:bg-white/90
                    transition-all duration-200"
       >
         <img
