@@ -4,6 +4,7 @@ import { HiX } from "react-icons/hi";
 import type { Movie } from '@/pages/movies/types/movie';
 import { useMovieStore } from '@/pages/movies/store/movieStore';
 import { movieService } from '@/pages/movies/services/movieService';
+import { useGlobalStore } from '@/shared/store/useGlobalStore';
 
 interface EditMovieDialogProps {
   movie: Movie;
@@ -16,8 +17,8 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
   const [genresStr, setGenresStr] = useState(movie.genres.join(", "));
   const [isActive, setIsActive] = useState(movie.is_active);
   const [saving, setSaving] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const { updateMovie } = useMovieStore();
+  const { showSnackbar } = useGlobalStore();
 
   const onSave = async (updatedData: Partial<Movie>) => {
     const updatedMovie = await movieService.updateMovie(movie.id, updatedData);
@@ -27,7 +28,6 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setSaving(true);
-    setError(null);
     const genres = genresStr
       .split(",")
       .map((g) => g.trim())
@@ -41,8 +41,9 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
         is_active: isActive,
       });
       onClose();
+      showSnackbar("فیلم با موفقیت ویرایش شد", "success");
     } catch (err: any) {
-      setError(err.message || "خطا در ذخیره‌سازی");
+      showSnackbar(err.message || "خطا در ذخیره‌سازی", "error");
     } finally {
       setSaving(false);
     }
@@ -126,11 +127,6 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
             </button>
           </div>
 
-          {error && (
-            <p className="text-xs text-red-500 bg-red-50 rounded-lg px-3 py-2">
-              {error}
-            </p>
-          )}
 
           <div className="flex justify-end gap-3 pt-3">
             <button
