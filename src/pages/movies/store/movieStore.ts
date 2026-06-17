@@ -7,7 +7,7 @@ interface MovieState {
   selectedMovieIdsForBulk: string[];  
   setMovies: (movies: Movie[]) => void;
   setFetched: () => void;
-  updateMovie: (updated: Movie) => void;
+  editMovieData: (updated: Movie) => void;
   setMultipleMoviesActiveStatus: (ids: string[], isActive: boolean) => void;
   deleteMultipleMovies: (ids: string[]) => void;
   toggleMovieBulkSelection: (id: string) => void;
@@ -22,7 +22,7 @@ export const useMovieStore = create<MovieState>((set) => ({
   setMovies: (movies) => set({ movies}),
   setFetched: () => set({ fetched: true }),
 
-  updateMovie: (updated) =>
+  editMovieData: (updated) =>
     set((state) => ({
       movies: state.movies.map((m) => (m.id === updated.id ? updated : m)),
     })),

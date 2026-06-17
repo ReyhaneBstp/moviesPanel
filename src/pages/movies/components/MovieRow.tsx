@@ -17,13 +17,17 @@ function MovieRowComponent({ movie }: MovieRowProps) {
 
   return (
     <>
-      <div className="flex items-center gap-3 card hover:shadow-md hover:bg-white/90 transition-all duration-200">
+      <div
+        className={`flex items-center gap-3 card hover:shadow-md transition-all duration-200 ${
+          isSelected ? 'bg-secondary-800/10 ' : 'hover:bg-white/90'
+        }`}
+      >
         <label className="flex-shrink-0 cursor-pointer select-none">
           <input
             type="checkbox"
             checked={isSelected}
             onChange={() => toggleMovieBulkSelection(movie.id)}
-            className="w-4 h-4 cursor-pointer mr-2 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+            className="w-4 h-4 cursor-pointer mr-2 rounded-sm border-gray-100 text-primary-600 focus:ring-primary-500"
           />
         </label>
 
@@ -67,7 +71,7 @@ function MovieRowComponent({ movie }: MovieRowProps) {
 
         <button
           onClick={() => setIsDialogOpen(true)}
-          className="cursor-pointer flex-shrink-0 p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+          className="btn flex-shrink-0 p-2 text-primary-400 hover:text-primary-600 hover:bg-primary-50 rounded-lg"
           title="ویرایش فیلم"
         >
           <FaEdit size={16} />
