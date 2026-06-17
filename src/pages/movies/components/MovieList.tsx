@@ -2,6 +2,9 @@ import { useRef } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { MovieRow } from "./MovieRow";
 import type { Movie } from "@/pages/movies/types/movie";
+import EmptyState from "@/shared/components/EmptyState";
+
+const ROW_HEIGHT = 80;
 
 interface MovieListProps {
   movies: Movie[];
@@ -13,41 +16,27 @@ export function MovieList({ movies }: MovieListProps) {
   const rowVirtualizer = useVirtualizer({
     count: movies.length,
     getScrollElement: () => parentRef.current,
-    estimateSize: () => 80,
+    estimateSize: () => ROW_HEIGHT,
     overscan: 1,
   });
 
   if (movies.length === 0) {
-    return (
-      <div className="flex h-64 items-center justify-center text-gray-400">
-        <p className="text-sm">هیچ نتیجه‌ای یافت نشد</p>
-      </div>
-    );
+    return <EmptyState />;
   }
 
   return (
-    <div ref={parentRef} className="h-[70vh] overflow-auto custom-scrollbar">
+    <div ref={parentRef} className="custom-scrollbar h-[70vh] overflow-auto">
       <div
-        style={{
-          height: `${rowVirtualizer.getTotalSize()}px`,
-          width: "100%",
-          position: "relative",
-        }}
+        className="relative w-full"
+        style={{ height: rowVirtualizer.getTotalSize() }}
       >
         {rowVirtualizer.getVirtualItems().map((virtualRow) => {
           const movie = movies[virtualRow.index];
           return (
             <div
               key={movie.id}
-              style={{
-                position: "absolute",
-                top: 0,
-                right: 0,
-                width: "100%",
-                height: `80px`,
-                transform: `translateY(${virtualRow.start}px)`,
-              }}
-              className="px-4 py-1"
+              className="absolute right-0 top-0 h-20 w-full px-4 py-1"
+              style={{ transform: `translateY(${virtualRow.start}px)` }}
             >
               <MovieRow movie={movie} />
             </div>
