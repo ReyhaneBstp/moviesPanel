@@ -1,28 +1,29 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { DashboardLayout } from "./layout/DashboardLayout";
+import { Layout } from "./layout/Layout";
 import { Snackbar } from "@/shared/components/Snackbar";
 import { useGlobalStore } from "@/shared/store/useGlobalStore";
 import MoviesPage from "./pages/movies/MoviesPage";
+import { ConfirmDialog } from "./shared/components/ConfirmDialog";
+import HomePage from "./pages/home/HomePage";
 
 function App() {
-  const { snackbar, hideSnackbar } = useGlobalStore();
-
+  const { snackbar, confirmDialog } = useGlobalStore();
   return (
     <>
       <BrowserRouter>
-        <DashboardLayout>
+        <Layout>
           <Routes>
-            <Route path="/" element={<Navigate to="/dashboard/movies" replace />} />
+            <Route
+              path="/"
+              element={<Navigate to="/dashboard/movies" replace />}
+            />
+            <Route path="/dashboard/" element={<HomePage />} />
             <Route path="/dashboard/movies" element={<MoviesPage />} />
           </Routes>
-        </DashboardLayout>
+        </Layout>
       </BrowserRouter>
-      <Snackbar
-        message={snackbar.message}
-        isOpen={snackbar.isOpen}
-        onClose={hideSnackbar}
-        severity={snackbar.severity}
-      />
+      {snackbar.isOpen && <Snackbar />}
+      {confirmDialog.isOpen && <ConfirmDialog />}
     </>
   );
 }

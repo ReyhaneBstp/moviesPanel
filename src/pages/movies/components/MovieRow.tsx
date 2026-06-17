@@ -2,12 +2,12 @@ import { memo, useState } from "react";
 import { FaStar, FaEdit } from "react-icons/fa";
 import { HiOutlineCalendar, HiOutlineGlobeAlt } from "react-icons/hi";
 import { RiCheckboxCircleFill, RiCloseCircleFill } from "react-icons/ri";
-import type { Movie } from '@/pages/movies/types/movie';
+import type { MovieModel } from '@/pages/movies/types/movie';
 import { EditMovieDialog } from "./EditMovieDialog";
 import { useMovieStore } from "../store/movieStore";
 
 interface MovieRowProps {
-  movie: Movie;
+  movie: MovieModel;
 }
 
 function MovieRowComponent({ movie }: MovieRowProps) {
@@ -17,13 +17,17 @@ function MovieRowComponent({ movie }: MovieRowProps) {
 
   return (
     <>
-      <div className="flex items-center gap-3 card hover:shadow-md hover:bg-white/90 transition-all duration-200">
+      <div
+        className={`flex items-center gap-3 card hover:shadow-md transition-all duration-200 ${
+          isSelected ? 'bg-secondary-800/10 ' : 'hover:bg-white/90'
+        }`}
+      >
         <label className="flex-shrink-0 cursor-pointer select-none">
           <input
             type="checkbox"
             checked={isSelected}
             onChange={() => toggleMovieBulkSelection(movie.id)}
-            className="w-4 h-4 cursor-pointer mr-2 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+            className="w-4 h-4 cursor-pointer mr-2 rounded-sm border-gray-100 text-primary-600 focus:ring-primary-500"
           />
         </label>
 
@@ -55,11 +59,11 @@ function MovieRowComponent({ movie }: MovieRowProps) {
 
         <div className="flex-shrink-0">
           {movie.is_active ? (
-            <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-700 border border-green-200">
+            <span className="inline-flex items-center gap-1 rounded-lg bg-green-50 px-3 py-1 text-xs font-semibold text-green-700 border border-green-200">
               <RiCheckboxCircleFill size={14} /> فعال
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-700 border border-red-200">
+            <span className="inline-flex items-center gap-1 rounded-lg bg-red-50 px-3 py-1 text-xs font-semibold text-red-700 border border-red-200">
               <RiCloseCircleFill size={14} /> غیرفعال
             </span>
           )}
@@ -67,7 +71,7 @@ function MovieRowComponent({ movie }: MovieRowProps) {
 
         <button
           onClick={() => setIsDialogOpen(true)}
-          className="cursor-pointer flex-shrink-0 p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+          className="btn flex-shrink-0 p-2 text-primary-400 hover:text-primary-600 hover:bg-primary-50 rounded-lg"
           title="ویرایش فیلم"
         >
           <FaEdit size={16} />

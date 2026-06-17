@@ -1,15 +1,15 @@
 import { useMemo, useState } from "react";
 import { HiAdjustments, HiX } from "react-icons/hi";
 import { FaStar } from "react-icons/fa";
-import { useMovieStore } from '@/pages/movies/store/movieStore';
-import { useUrlFilters } from '@/pages/movies/hooks/useUrlFilters';
-import type { Filters } from '@/pages/movies/types/filters';
+import { useMovieStore } from "@/pages/movies/store/movieStore";
+import { useUrlFilters } from "@/pages/movies/hooks/useUrlFilters";
+import type { FiltersModel } from "@/pages/movies/types/filters";
 
 export function FilterPanel() {
   const {
     filters,
-    setFilters: onApply,
-    resetFilters: onReset,
+    setFilters: setFilterInUrl,
+    resetFilters: resetUrl,
   } = useUrlFilters();
   const { search, ...restFilters } = filters;
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +25,7 @@ export function FilterPanel() {
     const updated = filters.genres.includes(genre)
       ? filters.genres.filter((g) => g !== genre)
       : [...filters.genres, genre];
-    onApply({ genres: updated });
+    setFilterInUrl({ genres: updated });
   };
 
   return (
@@ -41,7 +41,7 @@ export function FilterPanel() {
         {Object.values(restFilters).some(
           (v) =>
             (Array.isArray(v) && v.length > 0) ||
-            (typeof v === "string" &&  v !== "all") ||
+            (typeof v === "string" && v !== "all") ||
             (typeof v === "number" && v !== null && v !== 0)
         ) && (
           <span className="ml-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary-500 text-xs text-white">
@@ -56,9 +56,7 @@ export function FilterPanel() {
             className="cursor-pointer fixed inset-0 z-40 bg-black/30"
             onClick={() => setIsOpen(false)}
           />
-          <div
-            className="absolute left-0 top-14 z-50 w-80 card p-5"
-          >
+          <div className="absolute left-0 top-14 z-50 w-80 card p-5">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-base font-bold text-gray-800">
                 فیلترهای پیشرفته
@@ -103,7 +101,9 @@ export function FilterPanel() {
                   step="0.1"
                   value={filters.minRating ?? 0}
                   onChange={(e) =>
-                    onApply({ minRating: Number(e.target.value) || null })
+                    setFilterInUrl({
+                      minRating: Number(e.target.value) || null,
+                    })
                   }
                   className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
                 />
@@ -122,7 +122,7 @@ export function FilterPanel() {
                   type="number"
                   value={filters.yearFrom ?? ""}
                   onChange={(e) =>
-                    onApply({
+                    setFilterInUrl({
                       yearFrom: e.target.value ? Number(e.target.value) : null,
                     })
                   }
@@ -138,7 +138,7 @@ export function FilterPanel() {
                   type="number"
                   value={filters.yearTo ?? ""}
                   onChange={(e) =>
-                    onApply({
+                    setFilterInUrl({
                       yearTo: e.target.value ? Number(e.target.value) : null,
                     })
                   }
@@ -160,7 +160,7 @@ export function FilterPanel() {
                   <button
                     key={opt.value}
                     onClick={() =>
-                      onApply({ status: opt.value as Filters["status"] })
+                      setFilterInUrl({ status: opt.value as FiltersModel["status"] })
                     }
                     className={`cursor-pointer flex-1 rounded-lg py-2 text-xs font-medium transition ${
                       filters.status === opt.value
@@ -175,17 +175,8 @@ export function FilterPanel() {
             </div>
 
             <div className="flex justify-between">
-              <button
-                onClick={onReset}
-                className="btn btn-sm btn-ghost"
-              >
+              <button onClick={resetUrl} className="btn btn-sm btn-ghost">
                 حذف همه فیلترها
-              </button>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="btn btn-sm btn-primary"
-              >
-                تایید
               </button>
             </div>
           </div>

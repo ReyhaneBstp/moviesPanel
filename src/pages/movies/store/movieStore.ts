@@ -1,17 +1,13 @@
 import { create } from "zustand";
-import type { Movie } from '@/pages/movies/types/movie';
+import type { MovieModel } from '@/pages/movies/types/movie';
 
 interface MovieState {
-  movies: Movie[];
-  isLoading: boolean;
-  error: string | null;
+  movies: MovieModel[];
   fetched: boolean;
   selectedMovieIdsForBulk: string[];  
-  setMovies: (movies: Movie[]) => void;
-  setLoading: (loading: boolean) => void;
-  setError: (error: string | null) => void;
+  setMovies: (movies: MovieModel[]) => void;
   setFetched: () => void;
-  updateMovie: (updated: Movie) => void;
+  editMovieData: (updated: MovieModel) => void;
   setMultipleMoviesActiveStatus: (ids: string[], isActive: boolean) => void;
   deleteMultipleMovies: (ids: string[]) => void;
   toggleMovieBulkSelection: (id: string) => void;
@@ -20,17 +16,13 @@ interface MovieState {
 
 export const useMovieStore = create<MovieState>((set) => ({
   movies: [],
-  isLoading: false,
   error: null,
   fetched: false,
   selectedMovieIdsForBulk: [],        
-
-  setMovies: (movies) => set({ movies, isLoading: false, error: null }),
-  setLoading: (isLoading) => set({ isLoading }),
-  setError: (error) => set({ error, isLoading: false }),
+  setMovies: (movies) => set({ movies}),
   setFetched: () => set({ fetched: true }),
 
-  updateMovie: (updated) =>
+  editMovieData: (updated) =>
     set((state) => ({
       movies: state.movies.map((m) => (m.id === updated.id ? updated : m)),
     })),

@@ -6,20 +6,20 @@ import { useUrlFilters } from "@/pages/movies/hooks/useUrlFilters";
 export function SearchBar() {
   const {
     filters,
-    filters: { search: searchFilter },
+    filters: { search: searchTermInUrl },
     setFilters,
   } = useUrlFilters();
-  const [searchInput, setSearchInput] = useState(searchFilter);
+  const [searchInput, setSearchInput] = useState(searchTermInUrl);
   const debounced = useDebounce(searchInput, 400);
-  const onChange = (val: string) => setFilters({ ...filters, search: val });
+  const setSearchTermInUrl = (val: string) => setFilters({ ...filters, search: val });
 
   useEffect(() => {
-    if (debounced !== searchFilter) onChange(debounced);
+    if (debounced !== searchTermInUrl) setSearchTermInUrl(debounced);
   }, [debounced]);
 
   useEffect(() => {
-    setSearchInput(searchFilter);
-  }, [searchFilter]);
+    setSearchInput(searchTermInUrl);
+  }, [searchTermInUrl]);
 
   return (
     <div className="relative w-full max-w-md">
@@ -41,7 +41,7 @@ export function SearchBar() {
         <button
           onClick={() => {
             setSearchInput("");
-            onChange("");
+            setSearchTermInUrl("");
           }}
           className="btn pl-3 absolute inset-y-0 left-0  text-gray-400 hover:text-gray-600"
         >

@@ -1,6 +1,7 @@
 const jsonServer = require('json-server');
+const path = require('path');
 const server = jsonServer.create();
-const router = jsonServer.router('db.json'); 
+const router = jsonServer.router(path.join(__dirname, 'db.json')); 
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
@@ -53,5 +54,5 @@ server.patch('/api/movies/bulk/deactivate', (req, res) => {
 server.use('/api', router);
 
 server.listen(4000, () => {
-  console.log('JSON Server is running with custom bulk routes on port 3000');
+  console.log('JSON Server is running on port 4000');
 });

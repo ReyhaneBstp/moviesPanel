@@ -1,13 +1,13 @@
 import { useState, type FormEvent } from "react";
 import { createPortal } from "react-dom";
 import { HiX } from "react-icons/hi";
-import type { Movie } from '@/pages/movies/types/movie';
+import type { MovieModel } from '@/pages/movies/types/movie';
 import { useMovieStore } from '@/pages/movies/store/movieStore';
 import { movieService } from '@/pages/movies/services/movieService';
 import { useGlobalStore } from '@/shared/store/useGlobalStore';
 
 interface EditMovieDialogProps {
-  movie: Movie;
+  movie: MovieModel;
   onClose: () => void;
 }
 
@@ -17,12 +17,12 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
   const [genresStr, setGenresStr] = useState(movie.genres.join(", "));
   const [isActive, setIsActive] = useState(movie.is_active);
   const [saving, setSaving] = useState(false);
-  const { updateMovie } = useMovieStore();
+  const { editMovieData } = useMovieStore();
   const { showSnackbar } = useGlobalStore();
 
-  const onSave = async (updatedData: Partial<Movie>) => {
-    const updatedMovie = await movieService.updateMovie(movie.id, updatedData);
-    updateMovie(updatedMovie);
+  const handleUpdateMovieRow = async (updatedData: Partial<MovieModel>) => {
+    const updatedMovie = await movieService.editMovieData(movie.id, updatedData);
+    editMovieData(updatedMovie);
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -34,7 +34,7 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
       .filter(Boolean);
 
     try {
-      await onSave({
+      await handleUpdateMovieRow({
         title,
         year,
         genres,
