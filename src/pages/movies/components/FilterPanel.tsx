@@ -53,17 +53,18 @@ export function FilterPanel() {
       {isOpen && (
         <>
           <div
-            className="cursor-pointer fixed inset-0 z-40 bg-black/30"
+            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm sm:bg-black/10 sm:backdrop-blur-none cursor-pointer"
             onClick={() => setIsOpen(false)}
           />
-          <div className="absolute left-0 top-14 z-50 w-80 card p-5">
+          
+          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-[340px] max-h-[85vh] overflow-y-auto sm:absolute sm:top-14 sm:left-0 sm:translate-x-0 sm:translate-y-0 sm:w-80 z-50 card p-5 shadow-2xl">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-base font-bold text-gray-800">
                 فیلترهای پیشرفته
               </h3>
               <button
                 onClick={() => setIsOpen(false)}
-                className="cursor-pointer text-gray-400 hover:text-gray-600"
+                className="cursor-pointer text-gray-400 hover:text-gray-600 bg-gray-100 hover:bg-gray-200 p-1 rounded-md"
               >
                 <HiX className="h-5 w-5" />
               </button>
@@ -89,6 +90,7 @@ export function FilterPanel() {
                 ))}
               </div>
             </div>
+            
             <div className="mb-4">
               <label className="text-xs font-semibold text-gray-500 mb-1 block">
                 حداقل امتیاز IMDb
@@ -113,44 +115,32 @@ export function FilterPanel() {
                 </span>
               </div>
             </div>
+
             <div className="mb-4 grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-semibold text-gray-500 mb-1 block">
-                  از سال
-                </label>
+                <label className="text-xs font-semibold text-gray-500 mb-1 block">از سال</label>
                 <input
                   type="number"
                   value={filters.yearFrom ?? ""}
-                  onChange={(e) =>
-                    setFilterInUrl({
-                      yearFrom: e.target.value ? Number(e.target.value) : null,
-                    })
-                  }
+                  onChange={(e) => setFilterInUrl({ yearFrom: e.target.value ? Number(e.target.value) : null })}
                   placeholder="مثلا ۲۰۰۰"
                   className="w-full input"
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-gray-500 mb-1 block">
-                  تا سال
-                </label>
+                <label className="text-xs font-semibold text-gray-500 mb-1 block">تا سال</label>
                 <input
                   type="number"
                   value={filters.yearTo ?? ""}
-                  onChange={(e) =>
-                    setFilterInUrl({
-                      yearTo: e.target.value ? Number(e.target.value) : null,
-                    })
-                  }
+                  onChange={(e) => setFilterInUrl({ yearTo: e.target.value ? Number(e.target.value) : null })}
                   placeholder="مثلا ۲۰۲۴"
                   className="w-full input"
                 />
               </div>
             </div>
+
             <div className="mb-5">
-              <label className="text-xs font-semibold text-gray-500 mb-2 block">
-                وضعیت
-              </label>
+              <label className="text-xs font-semibold text-gray-500 mb-2 block">وضعیت</label>
               <div className="flex gap-2">
                 {[
                   { value: "all", label: "همه" },
@@ -159,9 +149,7 @@ export function FilterPanel() {
                 ].map((opt) => (
                   <button
                     key={opt.value}
-                    onClick={() =>
-                      setFilterInUrl({ status: opt.value as FiltersModel["status"] })
-                    }
+                    onClick={() => setFilterInUrl({ status: opt.value as FiltersModel["status"] })}
                     className={`cursor-pointer flex-1 rounded-lg py-2 text-xs font-medium transition ${
                       filters.status === opt.value
                         ? "bg-primary-600 text-white shadow-sm"
@@ -175,7 +163,7 @@ export function FilterPanel() {
             </div>
 
             <div className="flex justify-between">
-              <button onClick={resetUrl} className="btn btn-sm btn-ghost">
+              <button onClick={resetUrl} className="btn btn-sm btn-ghost w-full">
                 حذف همه فیلترها
               </button>
             </div>
