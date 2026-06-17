@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { DashboardLayout } from "./layout/DashboardLayout";
+import { Layout } from "./layout/Layout";
 import { Snackbar } from "@/shared/components/Snackbar";
 import { useGlobalStore } from "@/shared/store/useGlobalStore";
 import MoviesPage from "./pages/movies/MoviesPage";
@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <DashboardLayout>
+        <Layout>
           <Routes>
             <Route
               path="/"
@@ -20,7 +20,7 @@ function App() {
             <Route path="/dashboard/" element={<HomePage />} />
             <Route path="/dashboard/movies" element={<MoviesPage />} />
           </Routes>
-        </DashboardLayout>
+        </Layout>
       </BrowserRouter>
       {snackbar.isOpen && <Snackbar />}
       {confirmDialog.isOpen && <ConfirmDialog />}
