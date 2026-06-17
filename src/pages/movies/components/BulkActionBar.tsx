@@ -32,7 +32,7 @@ export function BulkActionBar() {
       <button
         onClick={() => handleBulkAction('activate')}
         disabled={isBulkActionInProgress}
-        className="p-1.5 rounded-full text-emerald-600 hover:bg-emerald-100 active:bg-emerald-200 transition-colors disabled:opacity-40"
+        className="btn btn-sm text-emerald-600 hover:bg-emerald-100 active:bg-emerald-200 transition-colors disabled:opacity-40"
         title="فعال کردن انتخاب‌ها"
       >
         <FaToggleOn size={16} />
@@ -40,7 +40,7 @@ export function BulkActionBar() {
       <button
         onClick={() => handleBulkAction('deactivate')}
         disabled={isBulkActionInProgress}
-        className="p-1.5 rounded-full text-amber-600 hover:bg-amber-100 active:bg-amber-200 transition-colors disabled:opacity-40"
+        className="btn btn-sm text-amber-600 hover:bg-amber-100 active:bg-amber-200 transition-colors disabled:opacity-40"
         title="غیرفعال کردن انتخاب‌ها"
       >
         <FaToggleOff size={16} />
@@ -48,7 +48,7 @@ export function BulkActionBar() {
       <button
         onClick={() => handleBulkAction('delete')}
         disabled={isBulkActionInProgress}
-        className="p-1.5 rounded-full text-rose-600 hover:bg-rose-100 active:bg-rose-200 transition-colors disabled:opacity-40"
+        className="btn btn-sm text-rose-600 hover:bg-rose-100 active:bg-rose-200 transition-colors disabled:opacity-40"
         title="حذف انتخاب‌ها"
       >
         <FaTrashAlt size={14} />
@@ -56,7 +56,7 @@ export function BulkActionBar() {
       <button
         onClick={clearBulkMovieSelection}
         disabled={isBulkActionInProgress}
-        className="p-1.5 rounded-full text-gray-400 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+        className="btn btn-sm text-gray-400 hover:bg-gray-100 active:bg-gray-200 transition-colors"
         title="لغو انتخاب"
       >
         <FaTimes size={14} />
