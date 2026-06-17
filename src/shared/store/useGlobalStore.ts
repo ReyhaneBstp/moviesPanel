@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import type { SnackbarSeverity } from '@/shared/components/Snackbar';
+import { create } from "zustand";
+import type { SnackbarSeverity } from "@/shared/components/Snackbar";
 
 interface SnackbarState {
   message: string;
@@ -7,19 +7,39 @@ interface SnackbarState {
   severity: SnackbarSeverity;
 }
 
+interface ConfirmDialogState {
+  isOpen: boolean;
+  operationName: string;
+  onConfirm: (() => Promise<void>) | null;
+  resolve?: (value: boolean) => void;
+}
+
 interface GlobalStore {
   snackbar: SnackbarState;
+  confirmDialog: ConfirmDialogState;
   showSnackbar: (message: string, severity?: SnackbarSeverity) => void;
   hideSnackbar: () => void;
+  showConfirmDialog: (
+    operationName: string,
+    onConfirm: () => Promise<void>
+  ) => Promise<boolean>;
+  hideConfirmDialog: (result: boolean) => void;
 }
 
 export const useGlobalStore = create<GlobalStore>((set) => ({
   snackbar: {
-    message: '',
+    message: "",
     isOpen: false,
-    severity: 'info',
+    severity: "info",
   },
-  showSnackbar: (message, severity = 'info') => {
+  confirmDialog: {
+    isOpen: false,
+    operationName: "",
+    onConfirm: null,
+    resolve: undefined,
+  },
+
+  showSnackbar: (message, severity = "info") => {
     set({
       snackbar: {
         message,
@@ -28,6 +48,7 @@ export const useGlobalStore = create<GlobalStore>((set) => ({
       },
     });
   },
+
   hideSnackbar: () => {
     set((state) => ({
       snackbar: {
@@ -35,5 +56,32 @@ export const useGlobalStore = create<GlobalStore>((set) => ({
         isOpen: false,
       },
     }));
+  },
+
+  showConfirmDialog: (operationName, onConfirm) => {
+    return new Promise<boolean>((resolve) => {
+      set({
+        confirmDialog: {
+          isOpen: true,
+          operationName,
+          onConfirm,
+          resolve,
+        },
+      });
+    });
+  },
+
+  hideConfirmDialog: (result) => {
+    set((state) => {
+      state.confirmDialog.resolve?.(result);
+      return {
+        confirmDialog: {
+          isOpen: false,
+          operationName: "",
+          onConfirm: null,
+          resolve: undefined,
+        },
+      };
+    });
   },
 }));

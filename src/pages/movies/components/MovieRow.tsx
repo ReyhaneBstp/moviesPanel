@@ -59,11 +59,11 @@ function MovieRowComponent({ movie }: MovieRowProps) {
 
         <div className="flex-shrink-0">
           {movie.is_active ? (
-            <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-700 border border-green-200">
+            <span className="inline-flex items-center gap-1 rounded-lg bg-green-50 px-3 py-1 text-xs font-semibold text-green-700 border border-green-200">
               <RiCheckboxCircleFill size={14} /> فعال
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-700 border border-red-200">
+            <span className="inline-flex items-center gap-1 rounded-lg bg-red-50 px-3 py-1 text-xs font-semibold text-red-700 border border-red-200">
               <RiCloseCircleFill size={14} /> غیرفعال
             </span>
           )}

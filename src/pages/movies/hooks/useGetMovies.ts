@@ -6,7 +6,7 @@ import { useGlobalStore } from "@/shared/store/useGlobalStore";
 export function useGetMovies() {
   const { movies, fetched, setMovies, setFetched } = useMovieStore();
   const { showSnackbar } = useGlobalStore();
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const fetchMovies = useCallback(() => {
