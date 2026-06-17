@@ -3,7 +3,7 @@ import { HiOutlineHome, HiOutlineMenu } from "react-icons/hi";
 import { useLocation } from "react-router-dom";
 import { navItems } from "./shared/navItems";
 import { DesktopSidebar } from "./desktop/DesktopSidebar";
-import { MobileMenu } from "./mobile/MobileMenu";
+import { MobileSidebar } from "./mobile/MobileSidebar";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -11,7 +11,7 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [MobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const location = useLocation();
   const selectedNavItem = navItems[location.pathname];
 
@@ -27,7 +27,7 @@ export function Layout({ children }: LayoutProps) {
           <h1 className="text-lg font-bold text-gray-900">
             <button
               className="md:hidden p-2 rounded-xl hover:bg-primary-50 text-secondary-dark cursor-pointer"
-              onClick={() => setMobileMenuOpen(true)}
+              onClick={() => setMobileSidebarOpen(true)}
             >
               <HiOutlineMenu size={20} />
             </button>
@@ -41,9 +41,9 @@ export function Layout({ children }: LayoutProps) {
         </header>
         <div className="flex-1 overflow-auto p-6 bg-neutral-bg">{children}</div>
       </main>
-      <MobileMenu
-        isOpen={mobileMenuOpen}
-        onClose={() => setMobileMenuOpen(false)}
+      <MobileSidebar
+        isOpen={MobileSidebarOpen}
+        onClose={() => setMobileSidebarOpen(false)}
       />
     </div>
   );

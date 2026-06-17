@@ -4,12 +4,12 @@ import { HiOutlineX } from "react-icons/hi";
 import { useLocation } from "react-router-dom";
 import { NavigationLinks } from "../shared/NavigationLinks";
 
-interface MobileMenuProps {
+interface MobileSidebarProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
   const location = useLocation();
 
   useEffect(() => {
@@ -21,7 +21,8 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   if (typeof document === "undefined") return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-50 transition-opacity duration-300">
+
+    <div dir="rtl" className="fixed inset-0 z-50 transition-opacity duration-300">
 
       <div
         className="absolute inset-0 bg-black/50"
@@ -34,13 +35,13 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         }`}
       >
         <div className="flex items-center justify-between p-4 border-b border-gray-100">
+          <h2 className="font-bold text-primary">پنل مدیریت</h2>
           <button
             onClick={onClose}
             className="p-2 rounded-xl hover:bg-primary-50 text-secondary-dark"
           >
             <HiOutlineX size={20} />
           </button>
-          <h2 className="font-bold text-primary">پنل مدیریت</h2>
         </div>
         <nav className="p-4 space-y-2">
           <NavigationLinks
