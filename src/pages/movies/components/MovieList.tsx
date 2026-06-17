@@ -4,7 +4,7 @@ import { MovieRow } from "./MovieRow";
 import type { MovieModel } from "@/pages/movies/types/movie";
 import EmptyState from "@/shared/components/EmptyState";
 
-const ROW_HEIGHT = 80;
+const ESTIMATED_ROW_HEIGHT = 100;
 
 interface MovieListProps {
   movies: MovieModel[];
@@ -16,8 +16,8 @@ export function MovieList({ movies }: MovieListProps) {
   const rowVirtualizer = useVirtualizer({
     count: movies.length,
     getScrollElement: () => parentRef.current,
-    estimateSize: () => ROW_HEIGHT,
-    overscan: 1,
+    estimateSize: () => ESTIMATED_ROW_HEIGHT,
+    overscan: 2,
   });
 
   if (movies.length === 0) {
@@ -25,7 +25,7 @@ export function MovieList({ movies }: MovieListProps) {
   }
 
   return (
-    <div ref={parentRef} className="custom-scrollbar h-[70vh] overflow-auto">
+    <div ref={parentRef} className="custom-scrollbar h-[70vh] overflow-auto overflow-x-hidden">
       <div
         className="relative w-full"
         style={{ height: rowVirtualizer.getTotalSize() }}
@@ -35,7 +35,9 @@ export function MovieList({ movies }: MovieListProps) {
           return (
             <div
               key={movie.id}
-              className="absolute right-0 top-0 h-20 w-full px-4 py-1"
+              data-index={virtualRow.index}
+              ref={rowVirtualizer.measureElement}
+              className="absolute right-0 top-0 w-full px-2 sm:px-4 py-2"
               style={{ transform: `translateY(${virtualRow.start}px)` }}
             >
               <MovieRow movie={movie} />

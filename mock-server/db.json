@@ -17,7 +17,7 @@
         "https://moviesapi.ir/images/tt0111161_screenshot3.jpg"
       ],
       "is_active": true,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "2",
@@ -35,8 +35,8 @@
         "https://moviesapi.ir/images/tt0068646_screenshot2.jpg",
         "https://moviesapi.ir/images/tt0068646_screenshot3.jpg"
       ],
-      "is_active": true,
-      "isActive": false
+      "is_active": false,
+      "isActive": true
     },
     {
       "id": "3",
@@ -55,7 +55,7 @@
         "https://moviesapi.ir/images/tt0071562_screenshot3.jpg"
       ],
       "is_active": true,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "4",
@@ -1340,7 +1340,8 @@
         "Comedy",
         "Romance"
       ],
-      "is_active": false
+      "is_active": false,
+      "isActive": true
     },
     {
       "id": "78",
