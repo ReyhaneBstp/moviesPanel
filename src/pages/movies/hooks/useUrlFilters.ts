@@ -1,24 +1,24 @@
 import { useSearchParams } from 'react-router-dom';
 import { useCallback, useMemo } from 'react';
-import type { Filters } from '@/pages/movies/types/filters';
+import type { FiltersModel } from '@/pages/movies/types/filters';
 
 
 export function useUrlFilters() {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const filters = useMemo<Filters>(() => {
+  const filters = useMemo<FiltersModel>(() => {
     return {
       search: searchParams.get('search') || '',
       genres: searchParams.get('genres')?.split(',').filter(Boolean) || [],
       minRating: searchParams.get('minRating') ? Number(searchParams.get('minRating')) : null,
       yearFrom: searchParams.get('yearFrom') ? Number(searchParams.get('yearFrom')) : null,
       yearTo: searchParams.get('yearTo') ? Number(searchParams.get('yearTo')) : null,
-      status: (searchParams.get('status') as Filters['status']) || 'all',
+      status: (searchParams.get('status') as FiltersModel['status']) || 'all',
     };
   }, [searchParams]);
 
   const setFilters = useCallback(
-    (newFilters: Partial<Filters>) => {
+    (newFilters: Partial<FiltersModel>) => {
       const params = new URLSearchParams(searchParams);
 
       if (newFilters.search !== undefined) {

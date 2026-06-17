@@ -3,7 +3,7 @@ import { HiAdjustments, HiX } from "react-icons/hi";
 import { FaStar } from "react-icons/fa";
 import { useMovieStore } from "@/pages/movies/store/movieStore";
 import { useUrlFilters } from "@/pages/movies/hooks/useUrlFilters";
-import type { Filters } from "@/pages/movies/types/filters";
+import type { FiltersModel } from "@/pages/movies/types/filters";
 
 export function FilterPanel() {
   const {
@@ -160,7 +160,7 @@ export function FilterPanel() {
                   <button
                     key={opt.value}
                     onClick={() =>
-                      setFilterInUrl({ status: opt.value as Filters["status"] })
+                      setFilterInUrl({ status: opt.value as FiltersModel["status"] })
                     }
                     className={`cursor-pointer flex-1 rounded-lg py-2 text-xs font-medium transition ${
                       filters.status === opt.value

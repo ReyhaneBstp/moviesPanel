@@ -1,13 +1,13 @@
 import { useState, type FormEvent } from "react";
 import { createPortal } from "react-dom";
 import { HiX } from "react-icons/hi";
-import type { Movie } from '@/pages/movies/types/movie';
+import type { MovieModel } from '@/pages/movies/types/movie';
 import { useMovieStore } from '@/pages/movies/store/movieStore';
 import { movieService } from '@/pages/movies/services/movieService';
 import { useGlobalStore } from '@/shared/store/useGlobalStore';
 
 interface EditMovieDialogProps {
-  movie: Movie;
+  movie: MovieModel;
   onClose: () => void;
 }
 
@@ -20,7 +20,7 @@ export function EditMovieDialog({ movie, onClose }: EditMovieDialogProps) {
   const { editMovieData } = useMovieStore();
   const { showSnackbar } = useGlobalStore();
 
-  const handleUpdateMovieRow = async (updatedData: Partial<Movie>) => {
+  const handleUpdateMovieRow = async (updatedData: Partial<MovieModel>) => {
     const updatedMovie = await movieService.editMovieData(movie.id, updatedData);
     editMovieData(updatedMovie);
   };

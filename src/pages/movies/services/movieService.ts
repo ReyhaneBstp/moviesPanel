@@ -1,5 +1,5 @@
 import { httpGet, httpPatch } from '@/shared/services/httpClient';
-import type { Movie } from '@/pages/movies/types/movie';
+import type { MovieModel } from '@/pages/movies/types/movie';
 
 const BASE_URL = "/api";
 
@@ -14,11 +14,11 @@ async function httpPost<T>(endpoint: string, body: any): Promise<T> {
 }
 
 export const movieService = {
-  getMovies(): Promise<Movie[]> {
-    return httpGet<Movie[]>("/movies");
+  getMovies(): Promise<MovieModel[]> {
+    return httpGet<MovieModel[]>("/movies");
   },
-  editMovieData(id: string, data: Partial<Movie>): Promise<Movie> {
-    return httpPatch<Movie>(`/movies/${id}`, data);
+  editMovieData(id: string, data: Partial<MovieModel>): Promise<MovieModel> {
+    return httpPatch<MovieModel>(`/movies/${id}`, data);
   },
   bulkActivate(ids: string[]): Promise<void> {
     return httpPatch<void>("/movies/bulk/activate", { ids });

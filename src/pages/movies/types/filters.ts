@@ -1,4 +1,4 @@
-export type Filters = {
+export type FiltersModel = {
     search: string;
     genres: string[];
     minRating: number | null;

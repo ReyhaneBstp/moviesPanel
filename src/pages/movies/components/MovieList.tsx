@@ -1,13 +1,13 @@
 import { useRef } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { MovieRow } from "./MovieRow";
-import type { Movie } from "@/pages/movies/types/movie";
+import type { MovieModel } from "@/pages/movies/types/movie";
 import EmptyState from "@/shared/components/EmptyState";
 
 const ROW_HEIGHT = 80;
 
 interface MovieListProps {
-  movies: Movie[];
+  movies: MovieModel[];
 }
 
 export function MovieList({ movies }: MovieListProps) {

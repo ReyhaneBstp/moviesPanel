@@ -1,13 +1,13 @@
 import { create } from "zustand";
-import type { Movie } from '@/pages/movies/types/movie';
+import type { MovieModel } from '@/pages/movies/types/movie';
 
 interface MovieState {
-  movies: Movie[];
+  movies: MovieModel[];
   fetched: boolean;
   selectedMovieIdsForBulk: string[];  
-  setMovies: (movies: Movie[]) => void;
+  setMovies: (movies: MovieModel[]) => void;
   setFetched: () => void;
-  editMovieData: (updated: Movie) => void;
+  editMovieData: (updated: MovieModel) => void;
   setMultipleMoviesActiveStatus: (ids: string[], isActive: boolean) => void;
   deleteMultipleMovies: (ids: string[]) => void;
   toggleMovieBulkSelection: (id: string) => void;
