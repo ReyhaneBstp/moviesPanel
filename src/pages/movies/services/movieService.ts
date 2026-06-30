@@ -1,17 +1,5 @@
-import { httpGet, httpPatch } from '@/shared/services/httpClient';
+import { httpGet, httpPatch, httpPost } from '@/shared/services/httpClient';
 import type { MovieModel } from '@/pages/movies/types/movie';
-
-const BASE_URL = "/api";
-
-async function httpPost<T>(endpoint: string, body: any): Promise<T> {
-  const response = await fetch(`${BASE_URL}${endpoint}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-  if (!response.ok) throw new Error(`خطا (${response.status})`);
-  return response.json() as Promise<T>;
-}
 
 export const movieService = {
   getMovies(): Promise<MovieModel[]> {
