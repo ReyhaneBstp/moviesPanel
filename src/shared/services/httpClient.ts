@@ -1,11 +1,5 @@
 const BASE_URL = "/api";
 
-import { useGlobalStore } from "@/shared/store/useGlobalStore";
-
-function showError(message: string) {
-  useGlobalStore.getState().showSnackbar(message, "error");
-}
-
 async function request<T>(
   endpoint: string,
   options: RequestInit = {}
@@ -33,8 +27,6 @@ async function request<T>(
       } catch {
         console.error("its not a json response")
       }
-
-      showError(errorMessage);
       throw new Error(errorMessage);
     }
 
@@ -50,15 +42,7 @@ async function request<T>(
 
     return (await response.text()) as T;
   } catch (error) {
-    if (error instanceof Error) {
-      if (error.message === "Failed to fetch") {
-        showError("ارتباط با سرور برقرار نشد.");
-      }
 
-      throw error;
-    }
-
-    showError("خطای ناشناخته‌ای رخ داد.");
     throw error;
   }
 }
