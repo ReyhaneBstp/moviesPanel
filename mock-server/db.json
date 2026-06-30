@@ -1,6 +1,6 @@
 {
   "movies": [
-    {
+{
       "id": "1",
       "title": "The Shawshank Redemption :)",
       "poster": "https://moviesapi.ir/images/tt0111161_poster.jpg",
@@ -16,8 +16,7 @@
         "https://moviesapi.ir/images/tt0111161_screenshot2.jpg",
         "https://moviesapi.ir/images/tt0111161_screenshot3.jpg"
       ],
-      "is_active": true,
-      "isActive": false
+      "is_active": true
     },
     {
       "id": "2",
@@ -35,8 +34,7 @@
         "https://moviesapi.ir/images/tt0068646_screenshot2.jpg",
         "https://moviesapi.ir/images/tt0068646_screenshot3.jpg"
       ],
-      "is_active": false,
-      "isActive": true
+      "is_active": false
     },
     {
       "id": "3",
@@ -54,8 +52,8 @@
         "https://moviesapi.ir/images/tt0071562_screenshot2.jpg",
         "https://moviesapi.ir/images/tt0071562_screenshot3.jpg"
       ],
-      "is_active": true,
-      "isActive": false
+      "is_active": true
+      
     },
     {
       "id": "4",
@@ -74,8 +72,8 @@
         "https://moviesapi.ir/images/tt0468569_screenshot2.jpg",
         "https://moviesapi.ir/images/tt0468569_screenshot3.jpg"
       ],
-      "is_active": false,
-      "isActive": false
+      "is_active": false
+      
     },
     {
       "id": "5",
@@ -93,8 +91,8 @@
         "https://moviesapi.ir/images/tt0050083_screenshot2.jpg",
         "https://moviesapi.ir/images/tt0050083_screenshot3.jpg"
       ],
-      "is_active": false,
-      "isActive": false
+      "is_active": false
+      
     },
     {
       "id": "6",
@@ -150,8 +148,7 @@
         "https://moviesapi.ir/images/tt0167260_screenshot2.jpg",
         "https://moviesapi.ir/images/tt0167260_screenshot3.jpg"
       ],
-      "is_active": true,
-      "isActive": false
+      "is_active": true
     },
     {
       "id": "9",
@@ -349,7 +346,7 @@
       ],
       "is_active": false
     },
-    {
+{
       "id": "20",
       "title": "Star Wars: Episode IV - A New Hope",
       "poster": "https://moviesapi.ir/images/tt0076759_poster.jpg",
@@ -400,7 +397,7 @@
       ],
       "is_active": true
     },
-    {
+{
       "id": "23",
       "title": "The Silence of the Lambs",
       "poster": "https://moviesapi.ir/images/tt0102926_poster.jpg",
@@ -715,8 +712,7 @@
         "Mystery",
         "Thriller"
       ],
-      "is_active": true,
-      "isActive": false
+      "is_active": true
     },
     {
       "id": "41",
@@ -1341,8 +1337,7 @@
         "Comedy",
         "Romance"
       ],
-      "is_active": false,
-      "isActive": true
+      "is_active": false
     },
     {
       "id": "78",
@@ -3742,7 +3737,7 @@
         "https://moviesapi.ir/images/tt1201607_screenshot2.jpg",
         "https://moviesapi.ir/images/tt1201607_screenshot3.jpg"
       ],
-      "is_active": true
+      "is_active": true  
     },
     {
       "id": "226",
@@ -4167,24 +4162,6 @@
         "https://moviesapi.ir/images/tt1220719_screenshot1.jpg",
         "https://moviesapi.ir/images/tt1220719_screenshot2.jpg",
         "https://moviesapi.ir/images/tt1220719_screenshot3.jpg"
-      ],
-      "is_active": true
-    },
-    {
-      "id": "251",
-      "title": "The Shawshank Redemption",
-      "poster": "https://moviesapi.ir/images/tt0111161_poster.jpg",
-      "year": "1994",
-      "country": "USA",
-      "imdb_rating": "9.3",
-      "genres": [
-        "Crime",
-        "Drama"
-      ],
-      "images": [
-        "https://moviesapi.ir/images/tt0111161_screenshot1.jpg",
-        "https://moviesapi.ir/images/tt0111161_screenshot2.jpg",
-        "https://moviesapi.ir/images/tt0111161_screenshot3.jpg"
       ],
       "is_active": true
     },
@@ -7932,6 +7909,7 @@
         "https://moviesapi.ir/images/tt1201607_screenshot3.jpg"
       ],
       "is_active": true
+      
     },
     {
       "id": "476",

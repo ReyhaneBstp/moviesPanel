@@ -29,7 +29,7 @@ server.patch('/api/movies/bulk/activate', (req, res) => {
 
   if (Array.isArray(ids)) {
     ids.forEach(id => {
-      db.get('movies').find({ id }).assign({ isActive: true }).write();
+      db.get('movies').find({ id }).assign({ is_active: true }).write();
     });
     res.status(200).json({ message: 'آیتم‌ها با موفقیت فعال شدند' });
   } else {
@@ -43,7 +43,7 @@ server.patch('/api/movies/bulk/deactivate', (req, res) => {
 
   if (Array.isArray(ids)) {
     ids.forEach(id => {
-      db.get('movies').find({ id }).assign({ isActive: false }).write();
+      db.get('movies').find({ id }).assign({ is_active: false }).write();
     });
     res.status(200).json({ message: 'آیتم‌ها با موفقیت غیرفعال شدند' });
   } else {
