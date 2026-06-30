@@ -53,7 +53,6 @@ A modern, feature-rich movie management dashboard built with React, TypeScript, 
 | **Tailwind CSS** | 4.3.1 | Utility-first CSS framework |
 | **React Router** | 7.17.0 | Client-side routing |
 | **Zustand** | 5.0.14 | State management |
-| **Axios** | 1.18.0 | HTTP client |
 | **React Virtual** | 3.14.2 | Virtual scrolling for performance |
 | **React Icons** | 5.6.0 | Icon library |
 
